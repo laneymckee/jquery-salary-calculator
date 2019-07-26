@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.4.1.js"></script>
+    <script src="client.js"></script>
+    <title>jQuery Salary Calculator</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Salary Calculator</h1>
+    </header>
+
+    <main>
+        <h2>Add Employee</h2>
+        <input id="employeeFirst" type="text" placeholder="First Name" />
+        <input id="employeeLast" type="text" placeholder="Last Name" />
+        <input id="employeeId" type="number" placeholder="ID" />
+        <input id="employeeSalary" type="number" placeholder="Annual Salary" />
+        <button id="submit">Submit</button>
+    </main>
+
+    <section>
+        <table>
+            <thead>
+                <tr>First Name</tr>
+                <tr>Last Name</tr>
+                <tr>ID</tr>
+                <tr>Title</tr>
+                <tr>Annual Salary</tr>
+                <tr>
+                    <!-- "delete" button column -->
+                </tr>
+            </thead>
+            <tbody id="employeeData">
+                <!-- employee table info here -->
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </section>
+
+    <footer>
+        <h2>Total Monthly: $<span id="totalMonthlySalary"></span></h2>
+    </footer>
+
+</body>
+
+</html>
