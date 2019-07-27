@@ -2,7 +2,6 @@ $(document).ready(readyNow);
 
 function readyNow() {
     $('#submit').on('click', submitEmployee);
-    $('.delete').find().on('click', deleteEmployee);
 }
 
 let totalMonthlySalary = 0
@@ -11,26 +10,36 @@ function submitEmployee() {
     let employeeFirst = $('#employeeFirst').val();
     let employeeLast = $('#employeeLast').val();
     let employeeId = $('#employeeId').val();
-    let employeeSalary = $('#employeeFirst').val();
+    let employeeTitle = $('#employeeTitle').val();
+    let employeeSalary = $('#employeeSalary').val();
 
     let employeeMonthly = employeeSalary / 12;
+
+    addTotalMonthly();
 
     $('#employeeData').append(`
     <tr>
     <td>${employeeFirst}</td>
     <td>${employeeLast}</td>
     <td>${employeeId}</td>
+    <td>${employeeTitle}</td>
     <td>${employeeSalary}</td>
     <td><button class="delete">Delete</button></td>
     </tr>
     `);
 
-    addTotalMonthly(employeeMonthly);
+    $('.delete').on('click', deleteEmployee);
+
+    $('#employeeFirst').val('');
+    $('#employeeLast').val('');
+    $('#employeeId').val('');
+    $('#employeeTitle').val('');
+    $('#employeeSalary').val('');
+
 }
 
 function deleteEmployee() {
-    console.log('delete');
-    $(this).parent().remove();
+    $(this).closest('tr').remove();
 }
 
 function addTotalMonthly() {
