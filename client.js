@@ -2,6 +2,7 @@ $(document).ready(readyNow);
 
 function readyNow() {
     $('#submit').on('click', submitEmployee);
+    $('#employeeInfo').on('click', '.delete', deleteEmployee);
 }
 
 let totalMonthly = 0
@@ -31,8 +32,6 @@ function submitEmployee() {
 
     addSalary();
 
-    $('.delete').on('click', deleteEmployee);
-
     $('#employeeFirst').val('');
     $('#employeeLast').val('');
     $('#employeeId').val('');
@@ -46,19 +45,19 @@ function addSalary() {
     $('#totalMonthly').text(totalMonthly);
 
     if (totalMonthly >= 20000) {
-        $('.totalSalarySum').css('background-color', 'red');
+        $('#totalMonthlySum').css('background-color', 'red');
     }
 }
 
 function deleteEmployee() {
-    totalMonthly -= $(this).closest('td').prev('td').text();
+    totalMonthly -= $(this).closest('td').prev('td').text() / 12;
     console.log('totalMonthly at delete:', totalMonthly);
     $('#totalMonthly').text(totalMonthly);
 
     $(this).closest('tr').remove();
 
     if (totalMonthly < 20000) {
-        $('.totalMonthlySum').css('background-color', '');
+        $('#totalMonthlySum').css('background-color', '');
     }
 
 }
