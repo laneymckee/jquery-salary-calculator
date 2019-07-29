@@ -4,7 +4,7 @@ function readyNow() {
     $('#submit').on('click', submitEmployee);
 }
 
-let totalMonthlySalary = 0
+let totalMonthly = 0
 
 function submitEmployee() {
 
@@ -16,20 +16,20 @@ function submitEmployee() {
         employeeSalary: $('#employeeSalary').val()
     }
 
-    $('#employeeData').append(`
+    $('#employeeInfo').append(`
     <tr>
     <td>${employee.employeeFirst}</td>
     <td>${employee.employeeLast}</td>
     <td>${employee.employeeId}</td>
     <td>${employee.employeeTitle}</td>
-    <td>${employee.employeeSalary}</td>
+    <td class="salary">${employee.employeeSalary}</td>
     <td><button class="delete">Delete</button></td>
     </tr>
     `);
 
-    let employeeMonthly = employeeSalary / 12;
+    totalMonthly += $('#employeeSalary').val() / 12;
 
-    addTotalMonthly();
+    addSalary();
 
     $('.delete').on('click', deleteEmployee);
 
@@ -41,10 +41,24 @@ function submitEmployee() {
 
 }
 
-function deleteEmployee() {
-    $(this).closest('tr').remove();
+function addSalary() {
+    console.log('totalMonthly at add:', totalMonthly);
+    $('#totalMonthly').text(totalMonthly);
+
+    if (totalMonthly >= 20000) {
+        $('.totalSalarySum').css('background-color', 'red');
+    }
 }
 
-function addTotalMonthly() {
+function deleteEmployee() {
+    totalMonthly -= $(this).closest('td').prev('td').text();
+    console.log('totalMonthly at delete:', totalMonthly);
+    $('#totalMonthly').text(totalMonthly);
+
+    $(this).closest('tr').remove();
+
+    if (totalMonthly < 20000) {
+        $('.totalMonthlySum').css('background-color', '');
+    }
 
 }
