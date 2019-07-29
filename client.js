@@ -7,26 +7,29 @@ function readyNow() {
 let totalMonthlySalary = 0
 
 function submitEmployee() {
-    let employeeFirst = $('#employeeFirst').val();
-    let employeeLast = $('#employeeLast').val();
-    let employeeId = $('#employeeId').val();
-    let employeeTitle = $('#employeeTitle').val();
-    let employeeSalary = $('#employeeSalary').val();
+
+    let employee = {
+        employeeFirst: $('#employeeFirst').val(),
+        employeeLast: $('#employeeLast').val(),
+        employeeId: $('#employeeId').val(),
+        employeeTitle: $('#employeeTitle').val(),
+        employeeSalary: $('#employeeSalary').val()
+    }
+
+    $('#employeeData').append(`
+    <tr>
+    <td>${employee.employeeFirst}</td>
+    <td>${employee.employeeLast}</td>
+    <td>${employee.employeeId}</td>
+    <td>${employee.employeeTitle}</td>
+    <td>${employee.employeeSalary}</td>
+    <td><button class="delete">Delete</button></td>
+    </tr>
+    `);
 
     let employeeMonthly = employeeSalary / 12;
 
     addTotalMonthly();
-
-    $('#employeeData').append(`
-    <tr>
-    <td>${employeeFirst}</td>
-    <td>${employeeLast}</td>
-    <td>${employeeId}</td>
-    <td>${employeeTitle}</td>
-    <td>${employeeSalary}</td>
-    <td><button class="delete">Delete</button></td>
-    </tr>
-    `);
 
     $('.delete').on('click', deleteEmployee);
 
