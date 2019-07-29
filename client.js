@@ -24,7 +24,7 @@ function submitEmployee() {
     <td>${employee.employeeId}</td>
     <td>${employee.employeeTitle}</td>
     <td class="salary">${employee.employeeSalary}</td>
-    <td><button class="delete">Delete</button></td>
+    <td><button class="delete btn btn-light btn-sm">Delete</button></td>
     </tr>
     `);
 
